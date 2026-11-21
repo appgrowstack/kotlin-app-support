@@ -21,9 +21,9 @@ private class FakeTransport : SupportTransport, HelpArticleSource {
     var ticketList: Result<List<SupportTicket>> = Result.success(emptyList())
     var articleList: List<HelpArticle> = emptyList()
 
-    override suspend fun submit(request: SupportRequest, context: SupportContext, lang: String): String {
+    override suspend fun submit(request: SupportRequest, context: SupportContext, lang: String): SupportSubmission {
         submitted += Triple(request, context, lang)
-        return "tkt_0123456789abcdef"
+        return SupportSubmission("tkt_0123456789abcdef")
     }
 
     override suspend fun tickets(): List<SupportTicket> = ticketList.getOrThrow()
@@ -55,7 +55,7 @@ class MailSupportTransportTest {
         assertEquals(SupportCapabilities(replies = false, images = false), mail.capabilities)
 
         val id = mail.submit(SupportRequest(SupportCategory.BILLING, subject = "  ", body = " 解約したい \n"), context().copy(sessionId = "ses_0123456789abcdef"), "ja")
-        assertEquals("mail", id)
+        assertEquals(SupportSubmission("mail"), id)
         val uri = URI(opened.single())
         assertEquals("mailto", uri.scheme)
         assertEquals("support@example.com", uri.schemeSpecificPart.substringBefore('?'))

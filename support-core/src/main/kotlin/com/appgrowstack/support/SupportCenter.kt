@@ -105,12 +105,15 @@ public class SupportCenter(
     /** Articles that may already answer what the person is typing. */
     public fun suggestions(text: String, limit: Int = 3): List<HelpArticle> = HelpSearch.search(text, state.value.articles, limit)
 
-    /** Sends the form. Returns the new request's id and reloads the list. */
-    public suspend fun submit(request: SupportRequest, screen: String? = null): String {
+    /**
+     * Sends the form and reloads the list. Throws only when the request was not made; images that
+     * did not reach it come back in [SupportSubmission.unsentImages].
+     */
+    public suspend fun submit(request: SupportRequest, screen: String? = null): SupportSubmission {
         val sending = if (capabilities.images) request else request.copy(images = emptyList())
-        val id = transport.submit(sending, context(screen), lang)
+        val submission = transport.submit(sending, context(screen), lang)
         if (capabilities.replies) runCatching { transport.tickets() }.onSuccess(::setTickets)
-        return id
+        return submission
     }
 
     /** Adds a message to a request and reloads it. */

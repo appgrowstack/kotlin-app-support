@@ -15,8 +15,14 @@ public data class SupportCapabilities(
 public interface SupportTransport {
     public val capabilities: SupportCapabilities
 
-    /** Sends a request with its images (when [SupportCapabilities.images]). Returns its id. */
-    public suspend fun submit(request: SupportRequest, context: SupportContext, lang: String): String
+    /**
+     * Sends a request with its images (when [SupportCapabilities.images]).
+     *
+     * Throws only when the request itself was not made. Once it exists, an image that could not be
+     * sent is handed back in [SupportSubmission.unsentImages] instead of throwing, so sending the
+     * form again never makes a second request.
+     */
+    public suspend fun submit(request: SupportRequest, context: SupportContext, lang: String): SupportSubmission
 
     /** This install's requests, newest first. Empty when the transport has no replies. */
     public suspend fun tickets(): List<SupportTicket>
@@ -24,6 +30,17 @@ public interface SupportTransport {
     /** Adds a message to one of this install's requests. */
     public suspend fun reply(body: String, ticketId: String): SupportMessage
 }
+
+/**
+ * What sending a request came to: the new request's id, and the images that did not reach it.
+ *
+ * @property unsentImages images the request was made without (the connection dropped after the
+ *   request was made). Send them to [ticketId] again, or tell the person to attach them in a reply.
+ */
+public data class SupportSubmission(
+    val ticketId: String,
+    val unsentImages: List<SupportImage> = emptyList(),
+)
 
 /** The help articles to search before writing. */
 public fun interface HelpArticleSource {

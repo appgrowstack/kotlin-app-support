@@ -21,9 +21,9 @@ public class MailSupportTransport(
 ) : SupportTransport {
     override val capabilities: SupportCapabilities = SupportCapabilities(replies = false, images = false)
 
-    override suspend fun submit(request: SupportRequest, context: SupportContext, lang: String): String {
+    override suspend fun submit(request: SupportRequest, context: SupportContext, lang: String): SupportSubmission {
         if (!open(mailtoUri(request, context))) throw SupportError.Transport("no mail app")
-        return "mail"
+        return SupportSubmission("mail")
     }
 
     override suspend fun tickets(): List<SupportTicket> = emptyList()
