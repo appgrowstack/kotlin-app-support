@@ -1,5 +1,3 @@
-English | [日本語](./README.ja.md)
-
 # kotlin-app-support
 
 In-app support for a small Android app: a contact form that attaches the context a developer needs
