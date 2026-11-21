@@ -19,7 +19,7 @@
 - **単体で動く。** `MailSupportTransport` は本文の下に文脈を読める行で付けたメールを開く。`BundledHelpArticles` はアプリに同梱した記事を読む
 - **残りはtransportが決める。** `SupportTransport` はできることを `capabilities` で返す。返事があれば、アプリは自分の問い合わせの一覧を出し、`SupportState.unreadCount` をバッジに使える。画像があれば、フォームはスクリーンショットを4枚まで受ける
 - **9つの言語を入れてある。** `SupportStrings` に画面の文言を英語・日本語・韓国語・簡体字・繁体字・スペイン語・ブラジルのポルトガル語・ドイツ語・フランス語で持つ（swift-app-supportと同じ）。`SupportStrings.forLanguage` が1つを選ぶ
-- **Androidに依存しない。** `support-core` はKotlin/JVM（coroutinesとkotlinx.serialization）。メールはアプリの `Intent` で開き、端末はアプリが `SupportDevice` で渡し、画面はアプリのComposeが `SupportCenter.state` から表示する
+- **Androidに依存しない。** `support-core` はKotlin/JVM（coroutinesとkotlinx.serialization）。メールはアプリの `Intent` で開き、端末はアプリが `SupportDevice` で渡し、画面はアプリのComposeが `SupportCenter.state` から表示する。画面はアプリの物なので、入力欄とメッセージに録画のマーク（kotlin-app-sessionsなら `Modifier.sessionMask()`）を付けるのもアプリ
 
 ## はじめに
 

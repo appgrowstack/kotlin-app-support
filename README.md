@@ -32,7 +32,8 @@ transport, context, articles, search and words in nine languages.
   swift-app-support. `SupportStrings.forLanguage` picks one
 - **No Android dependency.** `support-core` is Kotlin/JVM (coroutines and kotlinx.serialization).
   The app opens the mail with its own `Intent`, passes the device (`SupportDevice`) and draws the
-  screens in Compose from `SupportCenter.state`
+  screens in Compose from `SupportCenter.state`. Those screens are the app's, so the app puts its
+  screen recorder's mark on the fields and messages (for kotlin-app-sessions, `Modifier.sessionMask()`)
 
 ## Quick Start
 
