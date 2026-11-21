@@ -6,5 +6,5 @@ public object SupportSdk {
     public const val NAME: String = "kotlin-app-support"
 
     /** The released version. Must equal `version` in gradle.properties (SupportSdkTest checks it). */
-    public const val VERSION: String = "0.3.0"
+    public const val VERSION: String = "0.4.0"
 }

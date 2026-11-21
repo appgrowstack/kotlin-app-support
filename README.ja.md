@@ -46,7 +46,7 @@ val state by support.state.collectAsState()
 
 ## 入れ方
 
-JitPack: `com.github.appgrowstack:kotlin-app-support:0.3.0`。
+JitPack: `com.github.appgrowstack:kotlin-app-support:0.4.0`。
 
 ## 動く環境
 
