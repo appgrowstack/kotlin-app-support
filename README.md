@@ -61,7 +61,7 @@ val state by support.state.collectAsState()
 
 ## Installation
 
-JitPack: `com.github.appgrowstack:kotlin-app-support:<version>`.
+JitPack: `com.github.appgrowstack:kotlin-app-support:0.3.0`.
 
 ## Requirements
 

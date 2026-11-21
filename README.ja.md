@@ -17,7 +17,7 @@
 - **9つの言語を入れてある。** `SupportStrings` に画面の文言を英語・日本語・韓国語・簡体字・繁体字・スペイン語・ブラジルのポルトガル語・ドイツ語・フランス語で持つ（swift-app-support と同じ文）。`SupportStrings.forLanguage` が選ぶ
 - **Android に依存しない。** `support-core` は Kotlin/JVM（coroutines と kotlinx.serialization）。メールはアプリの `Intent` で開き、端末はアプリが `SupportDevice` で渡し、画面はアプリの Compose が `SupportCenter.state` から描く
 
-使い方は [README.md](./README.md) の Quick Start。入れ方は JitPack の `com.github.appgrowstack:kotlin-app-support:<版>`。
+使い方は[README.md](./README.md)のQuick Start。入れ方はJitPackの`com.github.appgrowstack:kotlin-app-support:0.3.0`。
 
 ## ライセンス
 

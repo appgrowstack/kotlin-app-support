@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
 
+## [0.3.0] - 2026-11-22
+
 ### Added
 
 - `support-core`: the Kotlin side of swift-app-support. `SupportSdk.NAME` and `SupportSdk.VERSION` for a connector to report.
