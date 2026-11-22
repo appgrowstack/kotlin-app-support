@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
 
+## [0.5.0] - 2026-11-23
+
+### Changed
+
+- No code change. The version follows swift-app-support 0.5.0 (`supportPrivateContent(_:)` is SwiftUI only).
+
 ## [0.4.0] - 2026-11-22
 
 ### Changed
